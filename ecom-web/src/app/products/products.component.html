@@ -1,0 +1,76 @@
+
+<div *ngIf="products" class="col-md-12">
+
+    <div class="products-tabs col-md-4 col-xs-12" *ngFor="let p of products._embedded.products">
+      <!-- tab -->
+      <div id="tab1" class="tab-pane">
+
+        <div class="product ">
+          <div class="product-img">
+            <img class=" btn" (click)="onProductDetails(p)" src="{{this.catService.host+'/photoProduct/'+p.id+'?ts='+getTS()}}"/>
+
+            <div class="product-label">
+              <span class="new">NEW</span>
+            </div>
+          </div>
+          <div class="product-body">
+
+            <h3 class="product-name"><a href="#">{{p.name}}</a></h3>
+            <h4 class="product-price">Price : {{p.currentPrice|number:'0.00'}}   <del class="product-old-price">{{p.currentPrice+30|number:'0.00'}}</del></h4>
+            <div class="product-rating">
+              <i class="glyphicon glyphicon-star "></i>
+              <i class="glyphicon glyphicon-star "></i>
+              <i class="glyphicon glyphicon-star "></i>
+              <i class="glyphicon glyphicon-star "></i>
+              <i class="glyphicon glyphicon-star "></i>
+            </div>
+            <div class="product-btns">
+              <div>
+									<span *ngIf="p.promotion" class="icon-product">
+                     <span class="glyphicon glyphicon-ok-circle" height="40"></span>
+									</span>
+                <span *ngIf="p.selected" class="icon-product">
+                    <span class="glyphicon glyphicon-heart-empty" height="40"></span>
+									</span>
+                <span *ngIf="p.available" class="icon-product">
+						        	<span class="glyphicon glyphicon-tag" height="40"></span>
+									</span>
+              </div>
+
+
+            </div>
+            <br>
+            <div *ngIf="authService.isAdmin()">
+              <button (click)="onEditPhoto(p)" class="btn btn-primary">
+                <span class="glyphicon glyphicon-edit"></span>
+              </button>
+              <p *ngIf="editPhoto && currentProduct==p" >
+                <br>
+                <label class="custom-file-upload">
+                <input type="file" (change)="onSelectedFile($event)" >
+                  choisir la photo
+                </label>
+                <br>
+                <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
+                {{progress}}
+              </p>
+            </div>
+            <br>
+          </div>
+          <div class="add-to-cart">
+            <form #f="ngForm" (ngSubmit)="onAddProductToCaddy(p)">
+              <label class="control-label" style="color: #FFFFFF;">Quantité : </label>
+              <input type="number" name="quantity" [(ngModel)]="p.quantity" ngModel style="width: 40px;border-radius: 6px;">
+              <br>
+              <button class="add-to-cart-btn">
+                <span class="glyphicon glyphicon-shopping-cart"> add to cart</span>
+              </button>
+            </form>
+          </div>
+        </div>
+        <br>  <br>  <br>  <br>
+      </div>
+    </div>
+</div>
+
+<br><b></b><br><br>

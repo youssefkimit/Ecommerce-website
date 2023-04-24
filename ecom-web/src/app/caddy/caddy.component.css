@@ -1,0 +1,16 @@
+.blue{
+  background-color: #1E1F29;
+  color: #FFFFFF;
+}
+.text-blue{
+  color: #1E1F29;
+}
+.rouge{
+  background-color: #D10024;
+  color: #FFFFFF;
+}
+
+.total,.price{
+  font-size: 15px;
+  color: #1E1F29;
+}

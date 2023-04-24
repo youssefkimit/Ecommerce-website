@@ -1,0 +1,232 @@
+<header>
+  <!-- TOP HEADER -->
+  <div id="top-header">
+    <div class="container">
+      <ul class="header-links pull-left">
+        <li><a href="#"><i class="glyphicon glyphicon-phone"></i> 06 57 17 43 60</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-envelope"></i> 9ri3astore@gmail.com</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-map-marker"></i> القريعة, مشروع 2</a></li>
+      </ul>
+      <ul class="header-links pull-right">
+        <li><a href="#"><i class="glyphicon glyphicon-ok"></i> MAD</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-user"></i> Bienvenue</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- /TOP HEADER -->
+
+
+
+</header>
+<!-- /HEADER -->
+<!-- MAIN HEADER -->
+<div id="header">
+
+<nav class="navbar navbar-inverse color">
+  <div class="container-fluid">
+    <div class="navbar-header ">
+      <a class="navbar-brand logo" href="">CasaStyle</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li ><a class="clickable" (click)="onSelectedProducts()">Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Products
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a class="clickable " (click)="onProductsPromo()">Promotion</a></li>
+          <li><a class="clickable" (click)="onProductsDispo()">Disponible</a></li>
+        </ul>
+      </li>
+      <li ><a class="clickable" *ngIf="authService.isAdmin()" (click)="orderClient()">Orders</a></li>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+       <li><a class="btn" (click)="onLogout()"><span class="glyphicon glyphicon-log-out"></span><span class="glyphicon glyphicon-user"></span></a></li>
+    </ul>
+    <ul class=" nav navbar-nav pull-right">
+      <li>
+        <a routerLink="/caddy">
+          <span class="badge">Panier1 :
+            {{caddyService.getCurrentCaddy().items.size}}</span>
+          <span class="glyphicon glyphicon-shopping-cart color-img"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+</div>
+
+
+<br><br><br>
+<div class="container groupproduct">
+  <div class="col-md-3">
+    <ul class="list-group group" *ngIf="categories">
+      <li [ngClass]="currentCategorie==c?'active':''" (click)="getProductsByCat(c)" class="list-group-item clickable" *ngFor="let c of categories._embedded.categories">
+        {{c.name}}
+      </li>
+    </ul>
+  </div>
+  <!-- /SECTION -->
+  <div class="col-md-9">
+    <router-outlet>
+
+    </router-outlet>
+  </div>
+</div>
+
+<br><br>
+
+<!-- SECTION -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <!-- shop -->
+      <div class="col-md-4 col-xs-6">
+        <div class="shop">
+          <div class="shop-img">
+            <img src="../assets/images/adds/1.jpg" alt="">
+          </div>
+          <div class="shop-body">
+            <h3>Survettes<br>Collection</h3>
+            <a href="#" class="cta-btn">Shop now <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /shop -->
+
+      <!-- shop -->
+      <div class="col-md-4 col-xs-6">
+        <div class="shop">
+          <div class="shop-img">
+            <img src="../assets/images/adds/2.jpg" alt="">
+          </div>
+          <div class="shop-body">
+            <h3>Jackets<br>Collection</h3>
+            <a href="#" class="cta-btn">Shop now <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /shop -->
+
+      <!-- shop -->
+      <div class="col-md-4 col-xs-6">
+        <div class="shop">
+          <div class="shop-img">
+            <img src="../assets/images/adds/3.jpg" alt="">
+          </div>
+          <div class="shop-body">
+            <h3>Chaussures<br>Collection</h3>
+            <a href="#" class="cta-btn">Shop now <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /shop -->
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- FOOTER -->
+<footer id="footer">
+  <!-- top footer -->
+  <div class="section">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <div class="col-md-3 col-xs-6">
+          <div class="footer">
+            <h3 class="footer-title">About Us</h3>
+            <p>bla bla bl bla bla.</p>
+            <ul class="footer-links">
+              <li><a href="#"><i class="fa fa-map-marker"></i> القريعة, مشروع 2 </a></li>
+              <li><a href="#"><i class="fa fa-phone"></i>06 57 17 43 60</a></li>
+              <li><a href="#"><i class="fa fa-envelope-o"></i>youssefkimit02@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+          <div class="footer">
+            <h3 class="footer-title">Categories</h3>
+            <ul class="footer-links">
+              <li><a href="#">Survettes</a></li>
+              <li><a href="#">Jackets</a></li>
+              <li><a href="#">Chaussures</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="clearfix visible-xs"></div>
+
+        <div class="col-md-3 col-xs-6">
+          <div class="footer">
+            <h3 class="footer-title">Information</h3>
+            <ul class="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Orders and Returns</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+          <div class="footer">
+            <h3 class="footer-title">Service</h3>
+            <ul class="footer-links">
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">View Cart</a></li>
+              <li><a href="#">Wishlist</a></li>
+              <li><a href="#">Track My Order</a></li>
+              <li><a href="#">Help</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /top footer -->
+
+  <!-- bottom footer -->
+  <div id="bottom-footer" class="section">
+    <div class="container">
+      <!-- row -->
+
+        <div class="col-md-12 text-center">
+          <div class="newsletter">
+          <ul class="newsletter-follow">
+            <li>
+              <a href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-pinterest"></i></a>
+            </li>
+          </ul>
+          </div>
+          <span class="copyright">
+
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script> 2023 | Casablanca
+
+							</span>
+        </div>
+
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /bottom footer -->
+</footer>
+<!-- /FOOTER -->
+
+

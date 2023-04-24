@@ -1,0 +1,49 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul class="nav nav-pills">
+      <li>
+        <button (click)="onAddCaddy()" class="btn btn-danger">
+          <span class="glyphicon glyphicon-plus pull-right"></span>
+        </button>
+      </li>
+      <li [ngClass]="c.name==caddyService.currentCaddyName?'active':''" *ngFor="let c of caddyService.listCaddies">
+        <a class="btn" (click)="onSelectCaddy(c)">{{c.name}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="panel panel-default" *ngIf="caddyService.getTotal()!=0">
+  <div class="panel-heading blue">{{caddy?.name}}
+  </div>
+  <div class="panel-body">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>&nbsp;&nbsp;ID</th><th>Name</th><th>Quantity</th><th>Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let pi of caddyService.getCurrentCaddy().items.values()">
+        <td>&nbsp;&nbsp;{{pi.product?.id}}</td>
+        <td>{{pi.product?.name}}</td>
+        <td>{{pi.quantity|number:'0.2'}}</td>
+        <td>{{pi.price|number:'0.2'}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="onRemoveProductFromCaddy(pi)">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </td>
+        <br> <br>
+      </tr>
+      <br>
+      <tr>
+        <td colspan="3" class="tota">&nbsp;&nbsp;Total</td>
+        <td><span class="text-blue">{{caddyService.getTotal()|number:'0.2'}} DH</span></td>
+      </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-default rouge" (click)="onNewOrder()">Commander</button>
+  </div>
+
+</div>
+

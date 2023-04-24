@@ -1,0 +1,23 @@
+
+<div *ngIf="orders && authService.isAdmin()" class="col-md-12">
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>Client</th>
+        <th>address</th>
+        <th>TotalAmount</th>
+        <th>Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let o of orders">
+        <td>{{o.client.name}}</td>
+        <td>{{o.client.address}}</td>
+        <td>{{o.totalAmount}}</td>
+        <td>{{o.date | date}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
